@@ -1,0 +1,20 @@
+# Replica Controller doesn't monitor already existing matching pods
+apiVersion: v1
+kind: ReplicaController
+metadata:
+  name: myapp-rc
+  labels:
+    app: myapp
+    type: frontend
+spec:
+  replicas: 3
+  template:
+    metadata:
+      name: myapp-pod
+      labels:
+        app: myapp
+        type: frontend
+    spec:
+      containers:
+      - name: nginx-container
+        image: nginx

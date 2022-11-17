@@ -1,0 +1,25 @@
+# Replica Set monitor already existing matching pods by using the selector
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-deploy
+  labels:
+    app: myapp
+    type: frontend
+spec:
+  replicas: 3
+  strategy:
+    type: Recreate # RollingUpdate (Default) | Recreate
+  selector:
+    matchLabels:
+      type: frontend
+  template:
+    metadata:
+      name: myapp-pod
+      labels:
+        app: myapp
+        type: frontend
+    spec:
+      containers:
+      - name: nginx-container
+        image: nginx
