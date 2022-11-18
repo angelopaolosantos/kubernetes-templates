@@ -19,6 +19,11 @@ spec:
           name: app-config
           key: APP_COLOR
 
+# plain key value
+    - name: APP_COLOR
+      value: pink 
+
+
   volumes:
   - name: app-config-volume
     configMap: 
